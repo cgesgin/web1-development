@@ -1,0 +1,154 @@
+
+/* Google Fonts üzerinden Roboto yazı tipini projeye dahil eder.
+   400 normal, 700 kalın yazı tipidir. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+/* Evrensel seçici: Sayfadaki bütün HTML elemanlarını seçer. */
+* {
+  /* Genişlik ve yükseklik hesaplamasına padding ve border değerlerini dahil eder. */
+  box-sizing: border-box;
+}
+
+
+/* Sayfanın ana gövdesini düzenler. */
+body {
+
+  /* Sayfanın yazı tipini Roboto olarak belirler. */
+  font-family: 'Roboto', sans-serif;
+
+  /* Flexbox sistemini aktif hale getirir. */
+  display: flex;
+
+  /* Elemanları dikey eksende ortalar. */
+  align-items: center;
+
+  /* Elemanları yatay eksende ortalar. */
+  justify-content: center;
+
+  /* Body yüksekliğini ekran yüksekliğinin tamamı yapar. */
+  height: 100vh;
+
+  /* Ekran dışına taşan içerikleri gizler. */
+  overflow: hidden;
+
+  /* Varsayılan dış boşluğu sıfırlar. */
+  margin: 0;
+}
+
+
+/* Bütün panellerin bulunduğu ana kapsayıcı. */
+.container {
+
+  /* İçerisindeki panelleri yan yana dizer. */
+  display: flex;
+
+  /* Kapsayıcının genişliğini ekranın %90'ı yapar. */
+  width: 90vw;
+}
+
+
+/* Her bir panelin genel tasarımını belirler. */
+.panel {
+
+    /* Arka plan görselinin boyutunu otomatik ayarlar. */
+    background-size: auto;
+
+    /* Arka plan görselini ortalar. */
+    background-position: center;
+
+    /* Arka plan görselinin tekrar etmesini engeller. */
+    background-repeat: no-repeat;
+
+    /* Panel yüksekliğini ekranın %80'i yapar. */
+    height: 80vh;
+
+    /* Panelin köşelerini 50 piksel yuvarlatır. */
+    border-radius: 50px;
+
+    /* Panel içerisindeki yazıların rengini beyaz yapar. */
+    color: white;
+
+    /* Fare panelin üzerine geldiğinde el işareti gösterir. */
+    cursor: pointer;
+
+    /* Panelin başlangıçtaki flex büyüme oranını belirler. */
+    flex: 0.5;
+
+    /* Panelin dışına her yönden 10 piksel boşluk ekler. */
+    margin: 10px;
+
+    /* Paneli, içerisindeki absolute konumlu elemanlar için referans yapar. */
+    position: relative;
+
+    /* Flex değerindeki değişimi 0.7 saniyelik animasyonla gerçekleştirir.
+       ease-in: Animasyon yavaş başlayıp hızlanır. */
+    transition: flex 0.7s ease-in;
+}
+
+
+/* Panel içerisindeki h3 başlıklarını düzenler. */
+.panel h3 {
+
+    /* Başlık yazısının boyutunu 24 piksel yapar. */
+    font-size: 24px;
+
+    /* Başlığı panel içerisinde bağımsız konumlandırır. */
+    position: absolute;
+
+    /* Başlığı panelin altından 20 piksel yukarı yerleştirir. */
+    bottom: 20px;
+
+    /* Başlığı panelin solundan 20 piksel içeri yerleştirir. */
+    left: 20px;
+
+    /* Başlığın varsayılan dış boşluğunu kaldırır. */
+    margin: 0;
+
+    /* Başlığı başlangıçta tamamen görünmez yapar. */
+    opacity: 0;
+}
+
+
+/* Hem panel hem active sınıfına sahip elemanı seçer. */
+.panel.active {
+
+    /* Aktif panelin diğer panellere göre daha fazla genişlemesini sağlar. */
+    flex: 5;
+}
+
+
+/* Sadece aktif panelin içerisindeki h3 başlığını seçer. */
+.panel.active h3 {
+
+    /* Aktif panelin başlığını görünür hale getirir. */
+    opacity: 1;
+
+    /* Başlığın görünmesini 0.3 saniyelik animasyonla sağlar.
+       0.4s: Animasyon başlamadan önce 0.4 saniye bekler. */
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+
+/* Ekran genişliği 480 piksel veya daha az olduğunda çalışır.
+   Yani mobil cihazlar için responsive tasarım oluşturur. */
+@media (max-width: 480px) {
+
+    /* Mobil cihazlarda ana kapsayıcının genişliğini ekranın tamamı yapar. */
+    .container {
+        width: 100vw;
+    }
+
+    /* Dördüncü ve beşinci panelleri seçer. */
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+
+        /* Seçilen panelleri tamamen gizler. */
+        display: none;
+    }
+
+    /* Mobil cihazlarda da aktif panelin genişlemesini sağlar. */
+    .panel.active {
+        flex: 5;
+    }
+}
